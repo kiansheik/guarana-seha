@@ -1,0 +1,87 @@
+{
+  "Identificação Cadastro/Registro CPSM": {
+    "options": ["Satere", "Caboclo"],
+    "Data do Casdastro": "",
+    "Assinatura AGENTE DE CAMPO": ""
+  },
+  "Dados do Produtor": {
+    "Nome do Produtor": "",
+    "Nome do Sitio": "",
+    "Data de Nascimento": "",
+    "CPF": "",
+    "RG": "",
+    "UF:": "AM",
+    "Código do País": "Brazil",
+    "Comunidade": "",
+    "Rio": "",
+    "Município": "",
+    "Telefone": "",
+    "Validade do Documento": "4 ANOS"
+  },
+  "Dimensão Social/Familiar": [
+    {"Nome Familiares":"", "Data de Nascimento":"", "Parantesco":"", "CPF":"", "Estuda":false, "Qual Série?":""} 
+  ],
+  "Dimensão Econômica Produtiva - Protocolos": {
+    "Situação Fundiária": ["Posse", "Uso Coletivo", "Comodato", "Título Definitivo", "Assentamento", ""],
+    "Acesso": ["Chão Batido", "Asfalto", "Só Picada", "outros?", ""],
+    "Instalações Tradicionais de Beneficiamento": {
+      "Fumeiro": { "Próprio": [true, false] },
+      "Forno de Barro": { "Próprio": [true, false] },
+      "Gamela": { "Próprio": [true, false] },
+      "Remo/Purê": { "Próprio": [true, false] },
+      "Casa do Lixo": { "Próprio": [true, false] }
+    },
+    "Consorciamento": [true, false],
+    "Espécies Consorciadas": [
+      "Andiroba", "Copaíba", "Unha de Gato",
+      "Pau Rosa", "Cumarú", "Urucum", 
+      "Jenipápo", "Crajirú", "Miratã", 
+      "Ingá", "Goiaba", "Açaí", 
+      "Cajú", "Banana", "Abacati", ""
+    ]
+  },
+  "Situações Ambientais na Unidade de Produção Familiar": [
+    "Assoreamentos de rios", 
+    "Desmatamentos", 
+    "Degradação do solo", 
+    "Compactação do Solo", 
+    "Queimadas", 
+    "Contaminação da Água", 
+    "Embalagem de Agrotóxicos", 
+    ""
+  ],
+  "Práticas Culturais na Unidade Produtiva Familiar": [
+    "Rotação de Cultura", 
+    "Plantio de nível", 
+    "Adubação verde", 
+    "Consorciamento", 
+    "Agroflorestal", 
+    "Controle alternativas de pragas e doenças", 
+    "Pousio", 
+    "Plantio de árvores para proteção de água", 
+    ""
+  ],
+  "Limpeza do Terreno": [
+    "Fogo", 
+    "Foice e Enxadas", 
+    "Grade e Arado", 
+    "Herbicidas", 
+    ""
+  ],
+  "Destino do Lixo": {
+    "Metais": ["Queimado", "Enterrado", ""],
+    "Plásticos": ["Queimado", "Enterrado", ""],
+    "Vidros": ["Queimado", "Enterrado", ""],
+    "Outros (Pilhas, Baterias)": ["Queimado", "Enterrado", ""]
+  },
+  "Preservação Ambiental e Biodiversidade": {
+    "Preserva fauna e flora": [true, false],
+    "Há rio na Unidade de Produção Familiar": [true, false]
+  },
+  "Status Produtor": ["C0", "C1", "C2", "C3", "E (Ecológico)"],
+  "Recomendação Anterior": "",
+  "Recomendações Cumpridas": [true, false],
+  "Termo de Compromisso": {
+    "Assinado": [true, false]
+  }
+}
