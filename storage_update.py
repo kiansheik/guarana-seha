@@ -1,9 +1,13 @@
 import sqlite3
 import requests
 from datetime import datetime
+import json, time
+from copy import deepcopy
+import pandas as pd
+import data_processing as dp
 
 # Connect to SQLite database
-conn = sqlite3.connect('offline_app.db')
+conn = sqlite3.connect('relational_data.db')
 cursor = conn.cursor()
 
 
@@ -41,7 +45,6 @@ def infer_schema_and_create_table(table_name, objects):
     cursor.execute(f"CREATE TABLE {table_name} (id INTEGER PRIMARY KEY AUTOINCREMENT, {schema}, synced INTEGER DEFAULT 0)")
     conn.commit()
     print(f"Table '{table_name}' created with schema: {schema}")
-
 
 def add_objects_to_table(table_name, objects):
     """
@@ -90,19 +93,46 @@ def sync_table_data(table_name, server_url):
         except requests.RequestException as e:
             print(f"Network error while syncing Record ID {record_id}: {e}")
 
+def sync_all_tables(server_url):
+    """
+    Syncs all tables in the database where a 'synced' column exists.
+
+    Args:
+        server_url (str): The server URL to sync data with.
+    """
+    # Get all tables in the database
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+    tables = cursor.fetchall()
+
+    for (table_name,) in tables:  # Unpack table name from tuple
+        # Check if the table has a 'synced' column
+        cursor.execute(f"PRAGMA table_info({table_name})")
+        columns = [col[1] for col in cursor.fetchall()]
+        if 'synced' in columns:
+            print(f"Syncing table: {table_name}")
+            sync_table_data(table_name, server_url)
+        else:
+            print(f"Skipping table {table_name}: No 'synced' column")
+
 
 # Example Usage
-example_data = [
-    {"producer_name": "Producer A", "data_blob": "Some data", "timestamp": "2024-11-23"},
-    {"producer_name": "Producer B", "data_blob": "Other data", "timestamp": "2024-11-22"},
-]
+example_data = []
 
 table_name = "producer_data"
 server_url = "https://example.com/api/upload"
 
-# Create schema and add data
-infer_schema_and_create_table(table_name, example_data)
-add_objects_to_table(table_name, example_data)
 
-# Sync data
-sync_table_data(table_name, server_url)
+
+with open("sample_form.json", "r") as file:
+    sample_form_data = json.load(file)
+
+# using the sample_form data, create fake data to sync with the server with diferent names
+for i in range(10):
+    new_data = deepcopy(sample_form_data)
+    new_data["dados_do_produtor"]["nome_do_produtor"] = f"Producer {i}"
+    new_data["timestamp"] = datetime.now().isoformat()
+    example_data.append(new_data)
+    time.sleep(0.1)
+    dp.process_specific_json_with_relationships(new_data, 'relational_data.db')
+
+sync_all_tables(server_url)

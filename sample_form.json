@@ -1,87 +1,95 @@
 {
-  "Identificação Cadastro/Registro CPSM": {
-    "options": ["Satere", "Caboclo"],
-    "Data do Casdastro": "",
-    "Assinatura AGENTE DE CAMPO": ""
-  },
-  "Dados do Produtor": {
-    "Nome do Produtor": "",
-    "Nome do Sitio": "",
-    "Data de Nascimento": "",
-    "CPF": "",
-    "RG": "",
-    "UF:": "AM",
-    "Código do País": "Brazil",
-    "Comunidade": "",
-    "Rio": "",
-    "Município": "",
-    "Telefone": "",
-    "Validade do Documento": "4 ANOS"
-  },
-  "Dimensão Social/Familiar": [
-    {"Nome Familiares":"", "Data de Nascimento":"", "Parantesco":"", "CPF":"", "Estuda":false, "Qual Série?":""} 
-  ],
-  "Dimensão Econômica Produtiva - Protocolos": {
-    "Situação Fundiária": ["Posse", "Uso Coletivo", "Comodato", "Título Definitivo", "Assentamento", ""],
-    "Acesso": ["Chão Batido", "Asfalto", "Só Picada", "outros?", ""],
-    "Instalações Tradicionais de Beneficiamento": {
-      "Fumeiro": { "Próprio": [true, false] },
-      "Forno de Barro": { "Próprio": [true, false] },
-      "Gamela": { "Próprio": [true, false] },
-      "Remo/Purê": { "Próprio": [true, false] },
-      "Casa do Lixo": { "Próprio": [true, false] }
+    "identificacao_cadastro_registro_cpsm": {
+      "options": ["satere", "caboclo"],
+      "data_do_cadastro": "",
+      "assinatura_agente_de_campo": ""
     },
-    "Consorciamento": [true, false],
-    "Espécies Consorciadas": [
-      "Andiroba", "Copaíba", "Unha de Gato",
-      "Pau Rosa", "Cumarú", "Urucum", 
-      "Jenipápo", "Crajirú", "Miratã", 
-      "Ingá", "Goiaba", "Açaí", 
-      "Cajú", "Banana", "Abacati", ""
-    ]
-  },
-  "Situações Ambientais na Unidade de Produção Familiar": [
-    "Assoreamentos de rios", 
-    "Desmatamentos", 
-    "Degradação do solo", 
-    "Compactação do Solo", 
-    "Queimadas", 
-    "Contaminação da Água", 
-    "Embalagem de Agrotóxicos", 
-    ""
-  ],
-  "Práticas Culturais na Unidade Produtiva Familiar": [
-    "Rotação de Cultura", 
-    "Plantio de nível", 
-    "Adubação verde", 
-    "Consorciamento", 
-    "Agroflorestal", 
-    "Controle alternativas de pragas e doenças", 
-    "Pousio", 
-    "Plantio de árvores para proteção de água", 
-    ""
-  ],
-  "Limpeza do Terreno": [
-    "Fogo", 
-    "Foice e Enxadas", 
-    "Grade e Arado", 
-    "Herbicidas", 
-    ""
-  ],
-  "Destino do Lixo": {
-    "Metais": ["Queimado", "Enterrado", ""],
-    "Plásticos": ["Queimado", "Enterrado", ""],
-    "Vidros": ["Queimado", "Enterrado", ""],
-    "Outros (Pilhas, Baterias)": ["Queimado", "Enterrado", ""]
-  },
-  "Preservação Ambiental e Biodiversidade": {
-    "Preserva fauna e flora": [true, false],
-    "Há rio na Unidade de Produção Familiar": [true, false]
-  },
-  "Status Produtor": ["C0", "C1", "C2", "C3", "E (Ecológico)"],
-  "Recomendação Anterior": "",
-  "Recomendações Cumpridas": [true, false],
-  "Termo de Compromisso": {
-    "Assinado": [true, false]
+    "dados_do_produtor": {
+      "nome_do_produtor": "",
+      "nome_do_sitio": "",
+      "data_de_nascimento": "",
+      "cpf": "",
+      "rg": "",
+      "uf": "am",
+      "codigo_do_pais": "brazil",
+      "comunidade": "",
+      "rio": "",
+      "municipio": "",
+      "telefone": "",
+      "validade_do_documento": "4_anos"
+    },
+    "dimensao_social_familiar": [
+      {
+        "nome_familiares": "",
+        "data_de_nascimento": "",
+        "parentesco": "",
+        "cpf": "",
+        "estuda": false,
+        "qual_serie": ""
+      }
+    ],
+    "dimensao_economica_produtiva_protocolos": {
+      "situacao_fundiaria": ["posse", "uso_coletivo", "comodato", "titulo_definitivo", "assentamento", ""],
+      "acesso": ["chao_batido", "asfalto", "so_picada", "outros", ""],
+      "instalacoes_tradicionais_de_beneficiamento": {
+        "fumeiro": { "proprio": [true, false] },
+        "forno_de_barro": { "proprio": [true, false] },
+        "gamela": { "proprio": [true, false] },
+        "remo_pure": { "proprio": [true, false] },
+        "casa_do_lixo": { "proprio": [true, false] }
+      },
+      "consorciamento": [true, false],
+      "especies_consorciadas": [
+        "andiroba", "copaiba", "unha_de_gato",
+        "pau_rosa", "cumaru", "urucum",
+        "jenipapo", "crajiru", "mirata",
+        "inga", "goiaba", "acai",
+        "caju", "banana", "abacati", ""
+      ]
+    },
+    "situacoes_ambientais_na_unidade_de_producao_familiar": [
+      "assoreamentos_de_rios",
+      "desmatamentos",
+      "degradacao_do_solo",
+      "compactacao_do_solo",
+      "queimadas",
+      "contaminacao_da_agua",
+      "embalagem_de_agrotoxicos",
+      ""
+    ],
+    "praticas_culturais_na_unidade_produtiva_familiar": [
+      "rotacao_de_cultura",
+      "plantio_de_nivel",
+      "adubacao_verde",
+      "consorciamento",
+      "agroflorestal",
+      "controle_alternativas_de_pragas_e_doencas",
+      "pousio",
+      "plantio_de_arvores_para_protecao_de_agua",
+      ""
+    ],
+    "limpeza_do_terreno": [
+      "fogo",
+      "foice_e_enxadas",
+      "grade_e_arado",
+      "herbicidas",
+      ""
+    ],
+    "destino_do_lixo": {
+      "metais": ["queimado", "enterrado", ""],
+      "plasticos": ["queimado", "enterrado", ""],
+      "vidros": ["queimado", "enterrado", ""],
+      "outros_pilhas_baterias": ["queimado", "enterrado", ""]
+    },
+    "preservacao_ambiental_e_biodiversidade": {
+      "preserva_fauna_e_flora": [true, false],
+      "ha_rio_na_unidade_de_producao_familiar": [true, false]
+    },
+    "status_produtor": ["c0", "c1", "c2", "c3", "e_ecologico"],
+    "recomendacao_anterior": "",
+    "recomendacoes_cumpridas": [true, false],
+    "termo_de_compromisso": {
+      "assinado": [true, false]
+    }
   }
-}
+  
