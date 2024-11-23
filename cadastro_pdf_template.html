@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Tecnica Cadastro</title>
+    <style>
+    .section div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    label {
+        margin-right: 5px;
+    }
+    .fine-print {
+        font-size: 0.9em; /* Smaller font size for fine print */
+        font-style: italic; /* Italicized text */
+        color: #555; /* Lighter gray color for subtlety */
+        line-height: 1.6; /* Improved line spacing */
+        text-align: justify; /* Justify text for better readability */
+        margin: 10px 0; /* Add spacing above and below the paragraph */
+    }
+    .small-input {
+        width: 150px;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+    .footer {
+            width: 100%;
+            margin-top: 50px; /* Adds spacing above the footer */
+            font-size: 0.9em;
+            font-family: Arial, sans-serif;
+        }
+    
+        .footer-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    
+        .footer-line span {
+            display: inline-block;
+        }
+    
+        .footer-meta {
+            display: flex;
+            justify-content: space-between;
+            font-style: italic;
+            color: #555;
+            font-size: 0.85em;
+        }
+    
+        .footer-meta span {
+            display: inline-block;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        input[type="text"], input[type="date"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        textarea {
+            height: 60px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .add-row-btn {
+            margin: 10px 0;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ficha Tecnica Cadastro</h1>
+    <h2>Conformidade Orgânica - SCI</h2>
+
+    <!-- Identification Section -->
+    <div class="section">
+        <h3>Identificação de Cadastro / Registro CPSM</h3>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="identificacao" value="satere"> Satere</label>
+            <label><input type="checkbox" name="identificacao" value="caboclo"> Caboclo</label>
+        </div>
+        <label>Data do Cadastro:</label>
+        <input type="date" name="data_do_cadastro">
+        <label>Assinatura do Agente de Campo:</label>
+        <input type="text" name="assinatura_agente_campo">
+    </div>
+
+    <!-- Producer Data -->
+    <div class="section">
+        <h3>Dados do Produtor</h3>
+        <label>Código de Cadastro:</label>
+        <input type="text" name="codigo_cadastro">
+        <label>Nome Sítio:</label>
+        <input type="text" name="nome_sitio">
+        <label>Nome do Produtor:</label>
+        <input type="text" name="nome_produtor">
+        <label>Data de Nascimento:</label>
+        <input type="date" name="data_nascimento">
+        <label>CPF:</label>
+        <input type="text" name="cpf">
+        <label>RG:</label>
+        <input type="text" name="rg">
+        <label>UF:</label>
+        <input type="text" name="uf" value="AM">
+        <label>Cód. País:</label>
+        <input type="text" name="pais" value="Brazil">
+        <label>Comunidade:</label>
+        <input type="text" name="comunidade">
+        <label>Rio:</label>
+        <input type="text" name="rio">
+        <label>Município:</label>
+        <input type="text" name="municipio">
+        <label>Telefone:</label>
+        <input type="text" name="telefone">
+        <label>VAL DOC:</label>
+        <input type="text" name="validade" value="4 ANOS">
+    </div>
+
+    <!-- Dimensão Social / Familiar Section -->
+    <div class="section">
+        <h3>Dimensão Social / Familiar</h3>
+        <table id="familiarTable">
+            <thead>
+                <tr>
+                    <th>Nome Familiares</th>
+                    <th>Data de Nascimento</th>
+                    <th>CPF</th>
+                    <th>Estuda (S/N)</th>
+                    <th>Qual Série?</th>
+                    <th>Parentesco</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+        <button class="add-row-btn" onclick="addRow()">Add Row</button>
+    </div>
+
+    <!-- Economic Dimension -->
+    <div class="section">
+        <h3>Dimensão Econômica Produtiva - Protocolos</h3>
+        <label>Qual a situação fundiária da área de coleta/produtiva?</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="situacao_fundiaria" value="posse"> Posse</label>
+            <label><input type="checkbox" name="situacao_fundiaria" value="uso_coletivo"> Uso Coletivo</label>
+            <label><input type="checkbox" name="situacao_fundiaria" value="comodato"> Comodato</label>
+            <label><input type="checkbox" name="situacao_fundiaria" value="titulo_definitivo"> Título Definitivo</label>
+            <label><input type="checkbox" name="situacao_fundiaria" value="assentamento"> Assentamento</label>
+        </div>
+        <label>Acesso:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="acesso" value="chao_batido"> Chão Batido</label>
+            <label><input type="checkbox" name="acesso" value="asfalto"> Asfalto</label>
+            <label><input type="checkbox" name="acesso" value="so_picada"> Só Picada</label>
+        </div>
+        <label>Outro Acesso:</label>
+        <input type="text" name="other_acesso">
+        <div class="section">
+            <h3>Instalações Tradicionais de Beneficiamento de Warana (Guaraná)</h3>
+            <p>ANEXO: É cultural do Satere defumar o Waraná para prolongar a validade e a qualidade para o consumo.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Instalação</th>
+                        <th>Próprio?</th>
+                        <th>Q?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fumeiro</td>
+                        <td>
+                            <label><input type="radio" name="fumeiro_proprio" value="sim"> S</label>
+                            <label><input type="radio" name="fumeiro_proprio" value="nao"> N</label>
+                        </td>
+                        <td><input type="text" name="fumeiro_q" placeholder="Q?"></td>
+                    </tr>
+                    <tr>
+                        <td>Forno de Barro</td>
+                        <td>
+                            <label><input type="radio" name="forno_de_barro_proprio" value="sim"> S</label>
+                            <label><input type="radio" name="forno_de_barro_proprio" value="nao"> N</label>
+                        </td>
+                        <td><input type="text" name="forno_de_barro_q" placeholder="Q?"></td>
+                    </tr>
+                    <tr>
+                        <td>Gamela</td>
+                        <td>
+                            <label><input type="radio" name="gamela_proprio" value="sim"> S</label>
+                            <label><input type="radio" name="gamela_proprio" value="nao"> N</label>
+                        </td>
+                        <td><input type="text" name="gamela_q" placeholder="Q?"></td>
+                    </tr>
+                    <tr>
+                        <td>Remo / Purê</td>
+                        <td>
+                            <label><input type="radio" name="remo_pure_proprio" value="sim"> S</label>
+                            <label><input type="radio" name="remo_pure_proprio" value="nao"> N</label>
+                        </td>
+                        <td><input type="text" name="remo_pure_q" placeholder="Q?"></td>
+                    </tr>
+                    <tr>
+                        <td>Casa do Lixo</td>
+                        <td>
+                            <label><input type="radio" name="casa_do_lixo_proprio" value="sim"> S</label>
+                            <label><input type="radio" name="casa_do_lixo_proprio" value="nao"> N</label>
+                        </td>
+                        <td><input type="text" name="casa_do_lixo_q" placeholder="Q?"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- hand work -->
+        <label>CONSORCIAMENTO?</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="situacao_fundiaria_sim" value="posse">Sim</label>
+            <label><input type="checkbox" name="situacao_fundiaria_nao" value="posse">Não</label>
+        </div>
+        <!-- sep -->        <!-- hand work -->
+        <label>QUAIS AS ESPÉCIES ESTÃO EM CONSORCIAMENTO?</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="especies_consorciadas" value="andiroba">Andiroba</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="copaiba">Copaíba</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="unha_de_gato">Unha de Gato</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="pau_rosa">Pau Rosa</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="cumaru">Cumaru</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="urucum">Urucum</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="jenipapo">Jenipapo</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="crajiru">Crajiru</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="mirata">Miratá</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="inga">Ingá</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="goiaba">Goiaba</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="acai">Açaí</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="caju">Cajú</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="banana">Banana</label>
+            <label><input type="checkbox" name="especies_consorciadas" value="abacati">Abacati</label>
+        </div>
+        <label>Outros?</label>
+        <input type="text" name="other_especies_consorciadas">
+        <label>SOMENTE IPÊ ROXO</label>
+        <input type="text" name="ipe_especies_consorciadas">
+        
+        <!-- sep -->
+
+    </div>
+
+    <div class="section">
+        <h3>Produtos e Produção</h3>
+        <table id="produtosTable">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Área Produtiva Ano Anterior (hc)</th>
+                    <th>Área Produtiva Ano Atual (hc)</th>
+                    <th>Nº de Plantas Produzem</th>
+                    <th>Produção Anterior (kg)</th>
+                    <th>Produção Atual (kg)</th>
+                    <th>Quant Vendida Atual (kg)</th>
+                    <th>Preço Vendido (kg)</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+        <button class="add-row-btn" onclick="addProductRow()">Add Row</button>
+    </div>
+    
+    <script>
+        function addProductRow() {
+            const tableBody = document.getElementById('produtosTable').getElementsByTagName('tbody')[0];
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="text" name="produto[]" placeholder="Produto"></td>
+                <td><input type="number" name="area_ano_anterior[]" placeholder="Área Ano Anterior (hc)"></td>
+                <td><input type="number" name="area_ano_atual[]" placeholder="Área Ano Atual (hc)"></td>
+                <td><input type="number" name="num_plantas[]" placeholder="Nº de Plantas Produzem"></td>
+                <td><input type="number" name="producao_anterior[]" placeholder="Produção Anterior (kg)"></td>
+                <td><input type="number" name="producao_atual[]" placeholder="Produção Atual (kg)"></td>
+                <td><input type="number" name="quant_vendida_atual[]" placeholder="Quant Vendida Atual (kg)"></td>
+                <td><input type="number" name="preco_vendido[]" placeholder="Preço Vendido (kg)"></td>
+                <td><button type="button" onclick="removeRow(this)">Remove</button></td>
+            `;
+            tableBody.appendChild(newRow);
+        }
+    
+        function removeRow(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+
+    <div class="section">
+        <h3>Quais situações ambientais são encontradas na unidade de produção familiar?</h3>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="situacoes_ambientais[]" value="assoreamentos_de_rios">Assoreamentos de Rios</label>
+            <label><input type="checkbox" name="situacoes_ambientais[]" value="desmatamentos">Desmatamentos</label>
+            <label><input type="checkbox" name="situacoes_ambientais[]" value="degradacao_do_solo">Degradação do Solo</label>
+            <label><input type="checkbox" name="situacoes_ambientais[]" value="compactacao_do_solo">Compactação do Solo</label>
+            <label><input type="checkbox" name="situacoes_ambientais[]" value="queimadas">Queimadas</label>
+            <label><input type="checkbox" name="situacoes_ambientais[]" value="contaminacao_da_agua">Contaminação da Água</label>
+            <label><input type="checkbox" name="situacoes_ambientais[]" value="embalagem_de_agrotoxicos">Embalagem de Agrotóxicos</label>
+        </div>
+    </div>
+    
+
+    <!-- Environmental Practices -->
+    <div class="section">
+        <h3>Quais praticas culturais são realizadas na unidade produtiva familiar?</h3>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="praticas_culturais" value="rotacao_cultura"> Rotação de Cultura</label>
+            <label><input type="checkbox" name="praticas_culturais" value="plantio_nivel"> Plantio de Nível</label>
+            <label><input type="checkbox" name="praticas_culturais" value="adubacao_verde"> Adubação Verde</label>
+            <label><input type="checkbox" name="praticas_culturais" value="agroflorestal"> Agroflorestal</label>
+            <label><input type="checkbox" name="praticas_culturais" value="controle_pragas"> Controle de Pragas</label>
+        </div>
+    </div>
+    <div class="section">
+        <h3>A limpeza do terreno para plantios é feita com:</h3>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="limpeza_do_terreno[]" value="fogo">Fogo</label>
+            <label><input type="checkbox" name="limpeza_do_terreno[]" value="foice_e_enxadas">Foice e Enxadas</label>
+            <label><input type="checkbox" name="limpeza_do_terreno[]" value="grade_e_arado">Grade e Arado</label>
+            <label><input type="checkbox" name="limpeza_do_terreno[]" value="herbicidas">Herbicidas</label>
+        </div>
+        <label>Outro:</label>
+        <input type="text" name="other_limpeza_do_terreno">
+    </div>
+    <div class="section">
+        <h3>Destino do Lixo</h3>
+        <div>
+            <label>Metais:</label>
+            <label><input type="radio" name="destino_lixo_metais" value="queimado"> Queimado</label>
+            <label><input type="radio" name="destino_lixo_metais" value="enterrado"> Enterrado</label>
+            <label>Outros:</label>
+            <input type="text" name="destino_lixo_metais_outros" class="small-input">
+        </div>
+        <div>
+            <label>Plásticos:</label>
+            <label><input type="radio" name="destino_lixo_plasticos" value="queimado"> Queimado</label>
+            <label><input type="radio" name="destino_lixo_plasticos" value="enterrado"> Enterrado</label>
+            <label>Outros:</label>
+            <input type="text" name="destino_lixo_plasticos_outros" class="small-input">
+        </div>
+        <div>
+            <label>Vidros:</label>
+            <label><input type="radio" name="destino_lixo_vidros" value="queimado"> Queimado</label>
+            <label><input type="radio" name="destino_lixo_vidros" value="enterrado"> Enterrado</label>
+            <label>Outros:</label>
+            <input type="text" name="destino_lixo_vidros_outros" class="small-input">
+        </div>
+        <div>
+            <label>Outros (Pilhas e Baterias):</label>
+            <label><input type="radio" name="destino_lixo_outros" value="queimado"> Queimado</label>
+            <label><input type="radio" name="destino_lixo_outros" value="enterrado"> Enterrado</label>
+            <label>Outros:</label>
+            <input type="text" name="destino_lixo_outros_outros" class="small-input">
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Preservação Ambiental e Biodiversidade</h3>
+        <div>
+            <label>Você se preocupa com a preservação do meio ambiente, e Fauna e Flora?</label>
+            <label><input type="radio" name="preserva_fauna_e_flora" value="true">Sim</label>
+            <label><input type="radio" name="preserva_fauna_e_flora" value="false">Não</label>
+        </div>
+        <div>
+            <label>Há um rio que passa pela sua Unidade de Produção Familiar?</label>
+            <label><input type="radio" name="ha_rio" value="true">Sim</label>
+            <label><input type="radio" name="ha_rio" value="false">Não</label>
+        </div>
+    </div>
+    <div class="section">
+        <h3>Status Produtor</h3>
+        <label for="status_produtor">Selecione o Status:</label>
+        <select id="status_produtor" name="status_produtor">
+            <option value="c0">C0</option>
+            <option value="c1">C1</option>
+            <option value="c2">C2</option>
+            <option value="c3">C3</option>
+            <option value="e_ecologico">E (Ecológico)</option>
+        </select>
+    </div>
+    <div class="section">
+        <h3>Recomendação Anterior</h3>
+        <label for="recomendacao_anterior">Descreva a recomendação anterior:</label>
+        <textarea id="recomendacao_anterior" name="recomendacao_anterior"></textarea>
+    </div>
+    <div class="section">
+        <h3>Recomendações Cumpridas</h3>
+        <label>As recomendações foram cumpridas?</label>
+        <label><input type="radio" name="recomendacoes_cumpridas" value="true">Sim</label>
+        <label><input type="radio" name="recomendacoes_cumpridas" value="false">Não</label>
+    </div>
+    <div class="section">
+        <h3>Termo de Compromisso</h3>
+        <label>Termo de compromisso foi assinado?</label>
+        <label><input type="radio" name="termo_de_compromisso" value="true">Sim</label>
+        <label><input type="radio" name="termo_de_compromisso" value="false">Não</label>
+    </div>
+    <div class="section">
+        <h3>Termo de Compromisso</h3>
+        <p class="fine-print">
+            Declaro me esforçar ao máximo, junto com a equipe do CPSM – Consórcio dos Produtores Sateré Mawé e departamento ligado ao
+            SCI – Sistema de Controle Interno, para atender às normas pedidas pela certificadora ( ) de seus protocolos exigidos,
+            pelo FGP (Forest Garden Products – Productos de Jardines Forestales), orgânico, ecológico e sustentável.
+        </p>
+    </div>
+    <h2>DECLARO, CONCORDAR COM O TERMO DE COMPROMISSO ACIMA</h2>
+    <div class="footer">
+        <div class="footer-line">
+            <span><b>Local/Data</b> __________________________</span>
+            <span><b>Assi/Produtor</b> __________________________</span>
+        </div>
+        <div class="footer-meta">
+            <span>Sistema de Controle Interno / Conformidade Orgânica</span>
+            <!-- <span>Página 02 de 03</span> -->
+        </div>
+    </div>
+                
+    <!-- Submit Section -->
+    <div class="section">
+        <button type="submit">Submit</button>
+    </div>
+    <!-- code time -->
+    <script>
+        function addRow() {
+            // Get the table body
+            const tableBody = document.getElementById('familiarTable').getElementsByTagName('tbody')[0];
+
+            // Create a new row
+            const newRow = document.createElement('tr');
+
+            // Add cells to the row
+            newRow.innerHTML = `
+                <td><input type="text" name="nome_familiares[]" placeholder="Nome Familiares"></td>
+                <td><input type="date" name="data_de_nascimento[]"></td>
+                <td><input type="text" name="cpf[]" placeholder="CPF"></td>
+                <td>
+                    <select name="estuda[]">
+                        <option value="S">S</option>
+                        <option value="N">N</option>
+                    </select>
+                </td>
+                <td><input type="text" name="qual_serie[]" placeholder="Qual Série"></td>
+                <td><input type="text" name="parentesco[]" placeholder="Parentesco"></td>
+                <td><button type="button" onclick="removeRow(this)">Remove</button></td>
+            `;
+
+            // Append the row to the table body
+            tableBody.appendChild(newRow);
+        }
+
+        function removeRow(button) {
+            // Remove the row that contains the clicked button
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+
+<script>
+    // Select all sections
+    const sections = document.querySelectorAll('.section');
+
+    // Add an "Obs:" textbox after each section
+    sections.forEach(section => {
+        // Create a wrapper div for the observation
+        const obsDiv = document.createElement('div');
+        obsDiv.style.marginTop = '10px';
+
+        // Add the label
+        const label = document.createElement('label');
+        label.textContent = 'Obs: ';
+        label.style.fontWeight = 'bold';
+
+        // Add the textbox
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'obs[]'; // To group all obs inputs for form submission
+        input.style.width = '100%';
+        input.style.marginTop = '5px';
+        input.style.padding = '5px';
+        input.style.boxSizing = 'border-box';
+
+        // Append label and textbox to the wrapper
+        obsDiv.appendChild(label);
+        obsDiv.appendChild(input);
+
+        // Append the wrapper to the section
+        section.appendChild(obsDiv);
+    });
+</script>
+
+</body>
+</html>
