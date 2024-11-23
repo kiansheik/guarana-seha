@@ -1,0 +1,1 @@
+https://wiki.amazoniahack.co/index.php?title=Current_challenges
